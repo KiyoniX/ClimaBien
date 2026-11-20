@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Logo de DPEClair (aussi l'icône d'onglet) : maison posée sur les bandes de couleur de l'étiquette énergie. -->
+  <rect x="2" y="15" width="3" height="7" rx=".6" fill="#009c6d"/>
+  <rect x="5.7" y="15" width="3" height="7" rx=".6" fill="#a3cf6e"/>
+  <rect x="9.4" y="15" width="3" height="7" rx=".6" fill="#f6e04b"/>
+  <rect x="13.1" y="15" width="3" height="7" rx=".6" fill="#eb6b36"/>
+  <rect x="16.8" y="15" width="3" height="7" rx=".6" fill="#d7221f"/>
+  <path d="M3 12.5 11 4.5l8 8" fill="none" stroke="#1a5fb4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="15" y="5" width="2.4" height="4.5" rx=".5" fill="#1a5fb4"/>
+</svg>

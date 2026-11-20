@@ -1,0 +1,13 @@
+{
+  "name": "dpeclair",
+  "private": true,
+  "description": "Ton futur appart est-il une passoire ? (site statique, aucune dépendance).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "local": "python -m http.server 8000"
+  }
+}

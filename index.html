@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Identité du site : <title>, description, theme-color, <h1> et slogan ci-dessous ; logo.svg ; css/site.css ; CONFIG.site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d7221f">
+  <title>DPEClair : ton futur appart est-il une passoire ?</title>
+  <meta name="description" content="Les diagnostics de performance énergétique (DPE) officiels de chaque immeuble, la facture d'énergie estimée et les logements interdits à la location, autour de n'importe quelle adresse en France.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+
+  <!-- Polices : Bunny Fonts (sans pistage). Outfit pour les titres, Inter pour le texte. -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,600,700|outfit:600,700&display=swap">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/site.css"> <!-- identité et styles propres au site -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<!-- data-vue : « liste » ou « carte ». Ne sert que sur mobile, où on n'affiche qu'un des deux à la fois. -->
+<body data-vue="liste">
+  <div class="app">
+    <div class="panneau">
+      <header class="entete">
+        <div class="marque">
+          <h1>
+            <img class="logo" src="logo.svg" alt="">
+            DPEClair
+          </h1>
+          <p>Ton futur appart est-il une passoire ?</p>
+        </div>
+
+        <div class="ligne-recherche">
+          <form id="recherche" class="recherche" role="search" autocomplete="off">
+            <input id="recherche-texte" type="search" placeholder="Adresse du logement…"
+                   aria-label="Chercher une adresse" aria-controls="suggestions">
+            <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+          </form>
+          <button id="ma-position" type="button" class="bouton-position" title="Autour de moi" aria-label="Autour de moi">
+            📍<span> Autour de moi</span>
+          </button>
+        </div>
+
+        <label class="rayon">
+          <span>Rayon</span>
+          <input id="rayon" type="range">
+          <output id="rayon-valeur" for="rayon"></output>
+        </label>
+
+        <nav id="types" class="onglets" aria-label="Type de logement"></nav>
+        <nav id="etiquettes" class="onglets etiquettes" aria-label="Étiquette énergie"></nav>
+
+        <div class="ligne-resume">
+          <p id="resume" class="resume" aria-live="polite">Chargement des DPE…</p>
+          <button id="actualiser" type="button" class="bouton-rond" title="Actualiser" aria-label="Actualiser">↻</button>
+        </div>
+      </header>
+
+      <div class="defilement">
+        <div class="ligne-liste">
+          <input id="filtre-adresse" class="filtre-nom" type="search" placeholder="Filtrer par rue, numéro…"
+                 aria-label="Filtrer les bâtiments de la zone par adresse">
+          <label class="choix"><span class="visuellement-cache">Ordre</span><select id="tri"></select></label>
+        </div>
+
+        <ol id="classement" class="classement" aria-label="Bâtiments et leurs DPE"></ol>
+        <button id="plus" type="button" class="bouton-plus" hidden></button>
+
+        <section class="encart">
+          <h2>Ce que dit la loi (location, métropole)</h2>
+          <p>
+            Depuis la loi Climat et résilience, un logement trop énergivore n'est plus « décent » : il ne peut plus faire
+            l'objet d'un nouveau bail ni d'un renouvellement. Logements classés <strong>G</strong> : depuis le 1er janvier 2025.
+            <strong>F</strong> : à partir du 1er janvier 2028. <strong>E</strong> : à partir du 1er janvier 2034.
+            Depuis août 2022, le loyer d'un logement F ou G ne peut plus être augmenté.
+          </p>
+          <p>
+            Information générale, pas un conseil juridique : les détails (bail en cours, outre-mer, travaux impossibles…)
+            sont sur <a href="https://www.service-public.fr/" target="_blank" rel="noopener">service-public.fr</a>.
+          </p>
+          <h2>À savoir sur les données</h2>
+          <p>
+            Ce sont les DPE officiels enregistrés auprès de l'ADEME depuis juillet 2021 (les plus anciens ne sont plus
+            valables). Un logement sans DPE récent n'apparaît pas. La facture d'énergie est l'estimation du diagnostic,
+            pas une facture réelle. Les DPE sont regroupés par adresse ; la couleur d'un immeuble est son étiquette
+            médiane.
+          </p>
+        </section>
+
+        <footer class="pied">
+          Données : <a href="https://data.ademe.fr/datasets/dpe03existant" target="_blank" rel="noopener">DPE logements existants, ADEME</a>
+          (Licence Ouverte) · adresses : IGN Géoplateforme.
+          · <a id="lien-depot" href="#" target="_blank" rel="noopener">Code source</a>
+        </footer>
+      </div>
+    </div>
+
+    <div class="zone-carte">
+      <div id="carte" class="carte" role="region" aria-label="Carte des bâtiments"></div>
+      <p class="astuce">Touche la carte ou fais glisser le point pour déplacer la zone</p>
+    </div>
+  </div>
+
+  <button id="bascule" type="button" class="bascule">🗺️ Carte</button>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* Identité de DPEClair et styles propres au site, chargés après css/base.css. Un fork change ses couleurs ici. */
+:root {
+  --accent: #1a5fb4; /* liens, boutons choisis, bouton flottant (bleu : ne pas confondre avec les étiquettes) */
+  --sur-accent: #ffffff; /* texte posé sur l'accent */
+  --couleur-zone: #1a5fb4; /* cercle et point central sur la carte */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #6ea8fe;
+    --sur-accent: #06121f;
+  }
+}
+
+/* Types de logement : 3 boutons. */
+#types { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Étiquettes : « Toutes » + A…G sur une ligne, le nombre sous la lettre. Le bouton choisi prend la couleur de l'étiquette. */
+.etiquettes { grid-template-columns: 1.6fr repeat(7, minmax(0, 1fr)); gap: 0.3rem; }
+.etiquettes .onglet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.2rem 0.1rem;
+  border-radius: 12px;
+  line-height: 1.15;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  border-bottom: 4px solid var(--couleur-etiquette, var(--bordure));
+}
+.etiquettes .onglet[aria-pressed="true"][style] { background: var(--couleur-etiquette); border-color: var(--couleur-etiquette); color: var(--texte-etiquette); }
+.etiquettes .compte { margin-left: 0; font-family: var(--police); font-size: 0.68em; font-weight: 400; font-variant-numeric: tabular-nums; }
+
+.resume .alerte { color: var(--alerte); font-weight: 600; }
+
+/* Recherche par adresse et ordre, au-dessus de la liste. */
+.ligne-liste { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; }
+.filtre-nom {
+  flex: 1;
+  min-width: 0;
+  height: 2.3rem;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background: var(--surface);
+  color: var(--texte);
+}
+.ligne-liste .choix { flex: none; }
+.ligne-liste .choix select { background: var(--surface); height: 2.3rem; }
+
+/* Pastille : lettre de l'étiquette médiane. */
+.fiche .rang { font-size: 1.05rem; }
+
+/* Lettre d'étiquette, comme sur le DPE officiel. */
+.lettre {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35em;
+  height: 1.35em;
+  padding: 0 0.2em;
+  border-radius: 4px;
+  font-family: var(--police-titre);
+  font-size: 0.85em;
+}
+
+/* Répartition des étiquettes d'un immeuble. */
+.repartition { display: flex; height: 8px; margin-top: 0.35rem; border-radius: 4px; overflow: hidden; max-width: 260px; }
+.repartition i { display: block; min-width: 4px; }
+
+.liste-dpe { margin: 0.35rem 0 0; padding: 0; list-style: none; font-size: 0.82rem; color: var(--texte-doux); }
+.liste-dpe li { margin-bottom: 0.25rem; }
+.details-dpe { margin-top: 0.35rem; font-size: 0.82rem; color: var(--texte-doux); }
+.details-dpe summary { cursor: pointer; width: fit-content; }
+.bulle .liste-dpe { max-height: 11rem; overflow-y: auto; color: #444; }
+.bulle .badges { margin: 0.3rem 0; }
+.bulle .repartition { max-width: none; }
+
+.bouton-plus {
+  display: block;
+  width: 100%;
+  margin-top: 0.6rem;
+  min-height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background: var(--surface);
+}
+.bouton-plus:hover { border-color: var(--accent); }
+
+/* Légende de la carte : les sept lettres. */
+.legende { gap: 0.2rem; }
+.legende > span:first-child { margin-right: 0.2rem; }
+
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
