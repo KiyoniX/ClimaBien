@@ -20,7 +20,7 @@ export function creerCarte(conteneur, { surClicPoint, surDeplacerCentre, legende
   const { lat, lon } = CONFIG.zoneParDefaut;
   const couleurZone = getComputedStyle(document.documentElement).getPropertyValue("--couleur-zone").trim() || "#0b6bcb";
 
-  // preferCanvas : des milliers de points restent fluides (une grande ville compte des milliers de contrôles).
+  // preferCanvas : des milliers de points restent fluides (une grande ville compte des milliers de bâtiments).
   const carte = L.map(conteneur, { preferCanvas: true }).setView([lat, lon], 12);
   L.tileLayer(CONFIG.tuiles.url, { attribution: CONFIG.tuiles.attribution, maxZoom: 19 }).addTo(carte);
   ajouterLegende(carte, legende);
