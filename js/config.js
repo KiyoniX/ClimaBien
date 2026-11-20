@@ -3,8 +3,8 @@
 export const CONFIG = {
   // Identité du site (le nom affiché et les couleurs sont dans index.html et css/site.css).
   site: {
-    cleMemoire: "dpeclair", // clé du stockage du navigateur : à changer dans un fork
-    depot: "https://github.com/KiyoniX/DPEClair", // lien « Code source » du pied de page
+    cleMemoire: "climabien", // clé du stockage du navigateur : à changer dans un fork
+    depot: "https://github.com/KiyoniX/ClimaBien", // lien « Code source » du pied de page
   },
 
   // Zone affichée à la première visite (ensuite : celle de l'adresse de la page, ou la dernière utilisée).

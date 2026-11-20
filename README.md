@@ -1,8 +1,8 @@
-# DPEClair
+# ClimaBien
 
 Ton futur appart est-il une passoire ? Les diagnostics de performance énergétique (DPE) officiels de chaque immeuble autour de n'importe quelle adresse en France, avec la facture d'énergie estimée et les logements que la loi interdit (ou interdira) à la location.
 
-**Site : https://kiyonix.github.io/DPEClair/**
+**Site : https://kiyonix.github.io/ClimaBien/**
 
 - Les données viennent de l'[ADEME](https://data.ademe.fr/datasets/dpe03existant) : tous les DPE de logements existants depuis juillet 2021 (16 millions), avec l'étiquette énergie de A à G, l'étiquette climat, la surface, la précision du logement (étage, type) et la facture d'énergie estimée.
 - La page les lit **en direct depuis le navigateur** : pas de serveur, pas de base de données.

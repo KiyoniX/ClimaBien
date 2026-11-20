@@ -1,4 +1,4 @@
-/* Identité de DPEClair et styles propres au site, chargés après css/base.css. Un fork change ses couleurs ici. */
+/* Identité de ClimaBien et styles propres au site, chargés après css/base.css. Un fork change ses couleurs ici. */
 :root {
   --accent: #1a5fb4; /* liens, boutons choisis, bouton flottant (bleu : ne pas confondre avec les étiquettes) */
   --sur-accent: #ffffff; /* texte posé sur l'accent */

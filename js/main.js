@@ -1,4 +1,4 @@
-// Point d'entrée de DPEClair : état (zone, type, étiquette, tri), chargement et affichage.
+// Point d'entrée de ClimaBien : état (zone, type, étiquette, tri), chargement et affichage.
 // Les briques génériques (carte, zone, chargement, mémoire, vue mobile) sont dans js/base/.
 import { CONFIG } from "./config.js";
 import { chargerBatiments } from "./api.js";
